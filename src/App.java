@@ -1,5 +1,10 @@
+import UI.Menus;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Menus menuLogin = new Menus();
+
+        menuLogin.showMenu();
     }
 }
+    
