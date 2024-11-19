@@ -5,14 +5,22 @@ import java.util.Scanner;
 
 public class Menus {
     UserService userService = new UserService();
+
+    // * Método para mostrar el menú de inicio de sesión
+    public void shieldITz() {
+        boolean activate;
+        do {
+            activate = showMenu();
+        } while (activate == false);
+    }
     
-    public void showMenu() {
+    public boolean showMenu() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
 
-        do{
         try {
             
+            // * Menu de inicio de sesión
             System.out.println("Mercado Libre");
             System.out.println("-------------------------");
             System.out.println("1. Iniciar sesión");
@@ -25,7 +33,7 @@ public class Menus {
             switch (opt) {
                 case 0: {
                     System.out.println("Gracias por usar Mercado Libre :)");
-                    break;
+                    return true;
                 }
     
                 case 1: {
@@ -43,10 +51,12 @@ public class Menus {
                     break;
                 }
             }
+
         } catch (Exception e) {
             System.out.println("Error: Elige una opción válida.");
+            return false;
         }
-        } while (opt != 0);
+        return false;
     }
 
     public void menuPrincipal() {
