@@ -19,7 +19,6 @@ public class UserService {
     User admin3 = new User(3, "Mangel", "Miguel", "Amado", "Miguelag@gmail.com", "amado55", 557811154);
     User admin4 = new User(4,"ihatebruno","Bruno","Villegas","brunogaelav2004@gmail.com", "hola1224", 553795599);
 
-    
 
     public boolean login() {
         userList.add(admin);
@@ -45,6 +44,51 @@ public class UserService {
         
 
     }
+
+    // * Creamos la funcion "register"
+    public UserService(List<User> userList) {
+        this.userList = userList;
+    }
+
+    public void register() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nombre de usuario: ");
+        String userName = scanner.nextLine();
+
+        for (User user : userList) {
+            if (user.getUserName().equals(userName)) {
+                System.out.println("El nombre de usuario ya está en uso.");
+                return;
+            }
+        }
+
+        System.out.print("Nombre: ");
+        String name = scanner.nextLine();
+        System.out.print("Apellido: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Correo electrónico: ");
+        String email = scanner.nextLine();
+
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                System.out.println("El correo electrónico ya está en uso.");
+                return;
+            }
+        }
+
+        System.out.print("Contraseña: ");
+        String password = scanner.nextLine();
+        System.out.print("Número de teléfono: ");
+        int phoneNum = Integer.parseInt(scanner.nextLine());
+
+        long newId = userList.size() + 1;
+        User newUser = new User(newId, userName, name, lastName, email, password, phoneNum);
+        userList.add(newUser);
+
+        System.out.println("Usuario registrado exitosamente. Bienvenido, " + userName + "!");
+    }
+}
 
     public void authentication() {
         boolean authentication;

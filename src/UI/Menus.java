@@ -43,6 +43,8 @@ public class Menus {
                 }
     
                 case 2: {
+                    userService.register();
+                    menuPrincipal();
                     break;
                 }
 
