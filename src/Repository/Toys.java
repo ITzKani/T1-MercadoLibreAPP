@@ -40,4 +40,7 @@ public class Toys {
         articleList9.add(toys14);
         articleList9.add(toys15);
     }
+    public List<Article> getArticleList9() {
+        return articleList9;
+    }
 }

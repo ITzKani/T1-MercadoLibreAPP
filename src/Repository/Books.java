@@ -40,4 +40,7 @@ public class Books {
         articleList2.add(book14);
         articleList2.add(book15);
     }
+    public List<Article> getBookList() {
+        return articleList2;
+    }
 }

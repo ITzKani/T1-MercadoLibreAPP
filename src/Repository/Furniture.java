@@ -41,4 +41,7 @@ public class Furniture {
         articleList4.add(forniture14);
         articleList4.add(forniture15);
     }
+    public List<Article> getFornitureList() {
+        return articleList4;
+    }
 }

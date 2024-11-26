@@ -40,4 +40,7 @@ public class Appliances {
         articleList.add(appliance14);
         articleList.add(appliance15);
     }
+    public List<Article> getApplianceList() {
+        return articleList;
+    }
 }
