@@ -7,12 +7,6 @@ public class Menus {
     UserService userService = new UserService();
 
     // * Método para mostrar el menú de inicio de sesión
-    public void shieldITz() {
-        boolean activate;
-        do {
-            activate = showMenu();
-        } while (activate == false);
-    }
     
     public boolean showMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -25,10 +19,13 @@ public class Menus {
             System.out.println("-------------------------");
             System.out.println("1. Iniciar sesión");
             System.out.println("2. Registrarse");
+            System.out.println("3. Consultar usuarios");
+            System.out.println("4. Elimnar usuario");
             System.out.println("0. Salir");
             System.out.println("-------------------------");
             System.out.print("Seleccione una opción: ");
             opt = scanner.nextByte();
+            
     
             switch (opt) {
                 case 0: {
@@ -37,12 +34,19 @@ public class Menus {
                 }
     
                 case 1: {
-                    userService.authentication();
                     menuPrincipal();
                     break;
                 }
     
                 case 2: {
+                    break;
+                }
+
+                case 3: {
+                    break;
+                }
+
+                case 4: {
                     break;
                 }
 

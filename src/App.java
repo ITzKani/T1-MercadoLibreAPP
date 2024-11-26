@@ -1,10 +1,13 @@
 import UI.Menus;
+import Service.UserService;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Menus menuLogin = new Menus();
+        UserService userService = new UserService();
 
-        menuLogin.shieldITz();
+        userService.addAdminUser();
+        userService.login();
+
     }
 }
     
