@@ -10,7 +10,7 @@ public class UserService {
 
     // * Categorias de articulos
     private String[] categorys = { "Tecnología", "Hogar", "Deportes", "Moda", "Juguetes", "Electrodomésticos",
-            "Muebles", "Libros", "Mascotas", "Otros" };
+            "Muebles", "Libros", "Mascotas", "Otros (Consolas de videojuegos y accesorios,videojuegos,musica,ropa,accesorios)" };
 
     // * Lista general de usuarios
     List<User> userList = new ArrayList<>();
@@ -18,6 +18,7 @@ public class UserService {
     User admin2 = new User(2, "PacmanXDdeoz","Carlos", "Vazquez", "carlosangel2710@hotmail.com","pa55word", 553854005);
     User admin3 = new User(3, "Mangel", "Miguel", "Amado", "Miguelag@gmail.com", "amado55", 557811154);
     User admin4 = new User(4,"ihatebruno","Bruno","Villegas","brunogaelav2004@gmail.com", "hola1224", 553795599);
+    User admin5 = new User(5,"AntonioIvann","Antonio","Reyes","rantonioivann@gmail.com", "juanwick", 551263178);
 
 
     public boolean login() {
@@ -25,6 +26,7 @@ public class UserService {
         userList.add(admin2);
         userList.add(admin3);
         userList.add(admin4);
+        userList.add(admin5);
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Nombre de usuario: ");
@@ -88,7 +90,6 @@ public class UserService {
 
         System.out.println("Usuario registrado exitosamente. Bienvenido, " + userName + "!");
     }
-}
 
     public void authentication() {
         boolean authentication;
