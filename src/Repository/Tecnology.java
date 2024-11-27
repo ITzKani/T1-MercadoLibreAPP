@@ -40,4 +40,7 @@ public class Tecnology {
         articleList8.add(tecnology14);
         articleList8.add(tecnology15);
     }
+    public List<Article> getTecnologyList(){
+        return articleList8;
+    }
 }

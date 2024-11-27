@@ -1,0 +1,15 @@
+Explicación del Código:
+Usuario.java:
+
+Define la clase Usuario con los atributos y métodos necesarios.
+Registro.java:
+
+Define la clase Registro, que gestiona los usuarios y el proceso de registro.
+Main.java:
+
+Define la clase principal Main con el menú principal y las opciones de inicio de sesión y registro.
+Añade el método mostrarMenuInicio para las opciones del menú de inicio.
+Añade la llamada a mostrarMenuOpciones para acceder a las opciones adicionales.
+MenuOpciones.java:
+
+Define la clase MenuOpciones con las opciones "Mi Perfil", "Mi Cartera", "Mis Compras" y "Configuración".

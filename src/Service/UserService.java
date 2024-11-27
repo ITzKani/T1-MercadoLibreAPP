@@ -14,7 +14,7 @@ public class UserService {
 
     // * Categorias de articulos
     private String[] categorys = { "Tecnología", "Hogar", "Deportes", "Moda", "Juguetes", "Electrodomésticos",
-            "Muebles", "Libros", "Mascotas", "Otros (Consolas de videojuegos y accesorios,videojuegos,musica,ropa,accesorios)" };
+            "Muebles", "Libros", "Mascotas", "Otros (Consolas de videojuegos y accesorios,videojuegos,musica,ropa,joyeria)" };
 
     // * Lista general de usuarios
     List<User> userList = new ArrayList<>();

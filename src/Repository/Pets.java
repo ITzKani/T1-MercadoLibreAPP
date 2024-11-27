@@ -40,4 +40,7 @@ public class Pets {
         articleList6.add(pets14);
         articleList6.add(pets15);
     }
+    public List<Article> getPetsList(){
+        return articleList6;
+    }
 }

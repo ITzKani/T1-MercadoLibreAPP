@@ -40,4 +40,7 @@ public class Sports {
         articleList7.add(sports14);
         articleList7.add(sports15);
     }
+    public List<Article> getSportsList(){
+        return articleList7;
+    }
 }

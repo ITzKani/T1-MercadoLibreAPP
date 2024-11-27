@@ -79,4 +79,12 @@ public class Article {
         this.price = price;
     }
 
+    // * Método toString
+    @Override
+    public String toString() {
+        return "Article [id=" + id + ", title=" + title + ", characteristics=" + characteristics + ", description="
+                + description + ", category=" + category + ", seller=" + seller + ", price=" + price + "]";
+    }
+
+
 }
