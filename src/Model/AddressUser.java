@@ -3,7 +3,7 @@ package Model;
 public class AddressUser extends PayMethod{
     
     // * Atributos
-    private long id;
+    private int id;
     private String street, city, state, country;
     private int postalCode;
     
@@ -12,7 +12,7 @@ public class AddressUser extends PayMethod{
     }
     
     // * Constructor
-    public AddressUser(long id, String street, String city, String state, String country, int postalCode) {
+    public AddressUser(int id, String street, String city, String state, String country, int postalCode) {
         this.id = id;
         this.street = street;
         this.city = city;
@@ -22,11 +22,11 @@ public class AddressUser extends PayMethod{
     }
     
     // * Getters y Setters
-    public long getId() {
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

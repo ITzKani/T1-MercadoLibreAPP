@@ -3,16 +3,16 @@ package Model;
 public class User extends AddressUser {
 
     // * Atributos
-    private long id;
+    private int id;
     private String userName ,name, lastName, email, password;
-    private int phoneNum;
+    private long phoneNum;
 
     // * Constructor vacío
     public User() {
     }
 
     // * Constructor
-    public User(long id, String userName, String name, String lastName, String email, String password, int phoneNum) {
+    public User(int id, String userName, String name, String lastName, String email, String password, long phoneNum) {
         this.id = id;
         this.userName = userName;
         this.name = name;
@@ -21,13 +21,13 @@ public class User extends AddressUser {
         this.password = password;
         this.phoneNum = phoneNum;
     }
-
+    
     // * Getters y Setters
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,18 +71,13 @@ public class User extends AddressUser {
         this.password = password;
     }
 
-    public int getPhoneNum() {
+    public long getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum(int phoneNum) {
+    public void setPhoneNum(long phoneNum) {
         this.phoneNum = phoneNum;
     }
 
-    // * toString
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", password="
-                + password + ", phoneNum=" + phoneNum + "]";
-    }
+    
 }

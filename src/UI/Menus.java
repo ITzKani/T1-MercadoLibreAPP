@@ -2,6 +2,14 @@ package UI;
 
 import Service.UserService;
 import java.util.Scanner;
+import Repository.Appliances;
+import Repository.Books;
+import Repository.Fashion;
+import Repository.Furniture;
+import Repository.Home;
+import Repository.Pets;
+import Repository.Sports;
+import Repository.Toys;
 
 public class Menus {
     UserService userService = new UserService();
@@ -19,8 +27,6 @@ public class Menus {
             System.out.println("-------------------------");
             System.out.println("1. Iniciar sesión");
             System.out.println("2. Registrarse");
-            System.out.println("3. Consultar usuarios");
-            System.out.println("4. Elimnar usuario");
             System.out.println("0. Salir");
             System.out.println("-------------------------");
             System.out.print("Seleccione una opción: ");
@@ -34,19 +40,15 @@ public class Menus {
                 }
     
                 case 1: {
+                    userService.authentication();
                     menuPrincipal();
                     break;
                 }
     
                 case 2: {
-                    break;
-                }
+                    userService.register();
+                    menuPrincipal();
 
-                case 3: {
-                    break;
-                }
-
-                case 4: {
                     break;
                 }
 
@@ -67,8 +69,10 @@ public class Menus {
         Scanner scanner = new Scanner(System.in);
         byte opt;
 
-        do {
-            System.out.println("Mercado Libre");
+        do{
+            
+            // * Menu de inicio de sesión
+           System.out.println("Mercado Libre");
             System.out.println("-------------------------");
             System.out.println("1. Articulos principales");
             System.out.println("2. Buscar articulos");
@@ -79,6 +83,107 @@ public class Menus {
             System.out.println("-------------------------");
             System.out.print("Seleccione una opción: ");
             opt = scanner.nextByte();
-        } while (opt != 0);
+    
+            switch (opt) {
+                case 0: {
+                    System.out.println("Gracias por usar Mercado Libre :)");
+                    
+                }
+    
+                case 1: {
+                    
+                    break;
+                }
+    
+                case 2: {
+                    
+                    break;
+                }
+                case 3: {
+                    categorias();                    
+                    break;
+                }
+
+                default: {
+                    System.out.println("Error: Elige una opción válida.");
+                    break;
+                }
+            }
+
+        } while(opt != 0); }
+
+       public boolean categorias() {
+        Scanner scanner = new Scanner(System.in);
+        byte opt;
+
+        do{
+            
+            // * Menu de inicio de sesión
+           System.out.println("Mercado Libre");
+            System.out.println("-------------------------");
+            System.out.println("1. Electrodomésticos");
+            System.out.println("2. Libros");
+            System.out.println("3. Moda y belleza");
+            System.out.println("4. Muebles");
+            System.out.println("5. Hogas");
+            System.out.println("6. Mascotas");
+            System.out.println("7. Deportes");
+            System.out.println("8. Tecnología");
+            System.out.println("9. Juguetes");
+            System.out.println("0. Regresar");
+            System.out.println("-------------------------");
+            System.out.print("Seleccione una opción: ");
+            opt = scanner.nextByte();
+    
+            switch (opt) {
+                case 0: {
+                    menuPrincipal();
+                    break;
+                }
+    
+                case 1: {
+                    break;
+                }
+    
+                case 2: {
+                    
+                    break;
+                }
+                case 3: {                 
+                    break;
+                }
+                case 4: {
+                    
+                    break;
+                }
+                case 5: {
+                    
+                    break;
+                }
+                case 6: {
+                
+                    break;
+                }
+                case 7: {
+                    
+                    break;
+                }
+                case 8: {
+                    
+                    break;
+                }
+                case 9: {
+                                        
+                    break;
+                }
+
+                default: {
+                    System.out.println("Error: Elige una opción válida.");
+                    break;
+                }
+            }
+
+        } while(opt != 0);
+        return false;   
     }
 }
