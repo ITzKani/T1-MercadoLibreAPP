@@ -3,11 +3,13 @@ package Service;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import Service.GeneralService;
 
 import Model.User;
 
 public class UserService {
 
+    GeneralService generalService = new GeneralService();
     // * Constructor vacio
     public UserService() {
     }
@@ -31,82 +33,99 @@ public class UserService {
         userList.add(admin4);
         userList.add(admin5);
     }
-    public boolean login() {
-        test();
+
+    public void login() {
         Scanner scanner = new Scanner(System.in);
+        test();
+    
+        //while (true) {
+            System.out.print("Nombre de usuario: ");
+            String username = scanner.nextLine();
+            System.out.print("Contraseña: ");
+            String password = scanner.nextLine();
+    
+            User matchedUser = userList.stream().filter(user -> user.getUserName().equals(username) && user.getPassword().equals(password)).findFirst().orElse(null);
+    
+            if (matchedUser != null) {
 
-        System.out.print("Nombre de usuario: ");
-        String username = scanner.nextLine();
-        System.out.print("Contraseña: ");
-        String password = scanner.nextLine();
-
-        for (User user : userList) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
-                System.out.println("Bienvenido " + user.getUserName());
-                return true;
+                generalService.cleanScreen();
+                System.out.println("Bienvenido " + matchedUser.getUserName());
+                //break; 
+            } else {
+                System.out.println("☒ Usuario o contraseña incorrectos. Inténtalo de nuevo.");
             }
-
-        }
-            System.out.println("Usuario o contraseña incorrectos");
-            return false;
+        //}
     }
     
-    public void authentication() {
-        boolean authentication;
-        do {
-            authentication = login();
-        } while (authentication == false);
-    }
     
     // * Creamos la funcion "register"
-    public UserService(List<User> userList) {
-        this.userList = userList;
-    }
 
     public boolean addUser() {
         test();
         Scanner scanner = new Scanner(System.in);
-        User user = new User();
-
-        try {
-            System.out.println("Registro de usuario");
+        User newUser = new User();
+    
+        System.out.println("Registro de usuario");
+    
+        // * Validar el nombre de usuario
+        while (true) {
             System.out.print("Nombre de usuario: ");
             String userName = scanner.nextLine();
-            
-            for(User u : userList){
-                if(u.getUserName().equals(userName)){
-                    System.out.println("El nombre de usuario ya existe, intenta con otro.");
-                    return false;
-                }
+    
+            if (userList.stream().anyMatch(user -> user.getUserName().equals(userName))) {
+                System.out.println("☒ El nombre de usuario ya existe, intenta con otro.");
+            } else {
+                newUser.setUserName(userName);
+                break;
             }
-            System.out.print("Nombre: ");
-            user.setName(scanner.nextLine());
-    
-            System.out.print("Apellido: ");
-            user.setLastName(scanner.nextLine());
-    
-            System.out.print("Numero de telefono: ");
-            user.setPhoneNum(scanner.nextInt());
-    
-            System.out.print("Correo electronico: ");
-            user.setEmail(scanner.next());
-    
-            System.out.print("Contraseña: ");
-            user.setPassword(scanner.next());
-
-
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error: Estas poniendo datos invalidos.");
-            return false;
         }
+    
+        // * Pedir el nombre
+        System.out.print("Nombre: ");
+        newUser.setName(scanner.nextLine());
+    
+        // * Pedir el apellido
+        System.out.print("Apellido: ");
+        newUser.setLastName(scanner.nextLine());
+    
+        // * Pedir el número de teléfono
+        while (true) {
+            try {
+                System.out.print("Número de teléfono: ");
+                newUser.setPhoneNum(scanner.nextInt());
+                scanner.nextLine(); // Limpiar buffer
+                break;
+            } catch (Exception e) {
+                System.out.println("☒ Ingresa un número de teléfono válido.");
+                scanner.nextLine(); // Limpiar buffer en caso de error
+            }
+        }
+    
+        // * Pedir el correo electrónico
+        while (true) {
+            System.out.print("Correo electrónico: ");
+            String email = scanner.nextLine();
+            if (isValidEmail(email)) {
+                newUser.setEmail(email);
+                break;
+            } else {
+                System.out.println("☒ Ingresa un correo electrónico válido.");
+            }
+        }
+    
+        // * Pedir la contraseña
+        System.out.print("Contraseña: ");
+        newUser.setPassword(scanner.nextLine());
+    
+        // * Agregar usuario a la lista
+        userList.add(newUser);
+        System.out.println("✔ Usuario registrado exitosamente.");
+        return true;
     }
-
-    public void register() {
-        boolean register;
-        do {
-            register = addUser();
-        } while (register == false);
+    
+    // * Método de validación de correo electrónico
+    private boolean isValidEmail(String email) {
+        return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 
 }

@@ -1,125 +1,173 @@
 package UI;
 
 import Service.UserService;
+import Service.GeneralService;
 import java.util.Scanner;
-import Repository.Appliances;
-import Repository.Books;
-import Repository.Fashion;
-import Repository.Furniture;
-import Repository.Home;
-import Repository.Pets;
-import Repository.Sports;
-import Repository.Toys;
 
 public class Menus {
     UserService userService = new UserService();
+    GeneralService generalService = new GeneralService();
 
     // * Método para mostrar el menú de inicio de sesión
-    
-    public boolean showMenu() {
+
+    public void showLogin() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
-
-        try {
-            
-            // * Menu de inicio de sesión
-            System.out.println("Mercado Libre");
-            System.out.println("-------------------------");
-            System.out.println("1. Iniciar sesión");
-            System.out.println("2. Registrarse");
-            System.out.println("0. Salir");
-            System.out.println("-------------------------");
-            System.out.print("Seleccione una opción: ");
-            opt = scanner.nextByte();
-            
+        boolean tryAgain = false;  // Iniciar como falso, solo cambia si hay error de entrada
     
-            switch (opt) {
-                case 0: {
-                    System.out.println("Gracias por usar Mercado Libre :)");
-                    return true;
-                }
+        while (true) {  // Un bucle infinito para seguir mostrando el menú
+            generalService.cleanScreen();  // Limpiar la pantalla al principio de cada ciclo
     
-                case 1: {
-                    userService.authentication();
-                    menuPrincipal();
-                    break;
-                }
+            // * Menú de inicio de sesión
+            System.out.println("████████████████████████████████");
+            System.out.println("     ⛟   Mercado Libre");
+            System.out.println("");
+            System.out.println("◼︎ 1. Iniciar sesión ◼︎");
+            System.out.println("◼︎ 2. Registrarse ◼︎");
+            System.out.println("◼︎ 0. Salir ◼︎");
+            System.out.println("");
+            System.out.println("████████████████████████████████");
+            System.out.println("   ☑  Selecciona una opción");
     
-                case 2: {
-                    userService.register();
-                    menuPrincipal();
-
-                    break;
-                }
-
-                default: {
-                    System.out.println("Error: Elige una opción válida.");
-                    break;
-                }
+            if (tryAgain) {
+                System.out.println("☒ Error: Elige una opción válida.");
             }
 
-        } catch (Exception e) {
-            System.out.println("Error: Elige una opción válida.");
-            return false;
+            else {
+                System.out.println("");
+            }
+    
+            System.out.print("▶   ");
+    
+            try {
+                opt = scanner.nextByte();  // Intentar leer la opción del usuario
+                tryAgain = false;  // Restablecer tryAgain si la entrada es válida
+    
+                switch (opt) {
+                    case 0:
+                        // Salir
+                        generalService.cleanScreen();
+                        System.out.println("Gracias por usar Mercado Libre...⛟");
+                        return;  // Terminar el programa
+    
+                    case 1:
+                        // Iniciar sesión
+                        userService.login();
+                        generalService.showLoadingTruck();  // Mostrar la animación de carga
+                        generalService.cleanScreen();  // Limpiar la pantalla después de cargar
+                        showPrincipalMenu();  // Mostrar el menú principal
+                        break;  // Asegurarse de salir del switch después de ejecutar esta opción
+    
+                    case 2:
+                        // Registrarse
+                        userService.addUser();
+                        generalService.showLoadingTruck();  // Mostrar la animación de carga
+                        generalService.cleanScreen();  // Limpiar la pantalla después de cargar
+                        showPrincipalMenu();  // Mostrar el menú principal
+                        break;  // Asegurarse de salir del switch después de ejecutar esta opción
+    
+                    default:
+                        // Opción inválida
+                        tryAgain = true;  // Marcar como error si la opción no es válida
+                        break;  // Salir del switch para evitar seguir ejecutando casos incorrectos
+                }
+    
+            } catch (Exception e) {
+                // Error en la entrada, limpiar el buffer y seguir en el bucle
+                scanner.nextLine();  // Limpiar el buffer de entrada para evitar un bucle infinito
+                tryAgain = true;  // Marcar como error si hay excepción en la entrada
+            }
         }
-        return false;
+    }
+    
+    
+
+    public void showPrincipalMenu() {
+        Scanner scanner = new Scanner(System.in);
+        byte opt;
+        boolean tryAgain = false;
+
+        while(tryAgain){
+            // * Menu principal
+            System.out.println("████████████████████████████████");
+            System.out.println("     ⛟   Mercado Libre");
+            System.out.println("");
+            System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            System.out.println("⊞ 1. Home ⊞   ☰ 2. Categorias ☰");
+            System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            System.out.println("   ✒ 3. Buscar articulos ✒");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("✱ 4. Configuración✱");
+            System.out.println("⚿ 0. Cerrar sesión ⚿");
+            System.out.println("   ☑  Selecciona una opción");
+            System.out.println("");
+    
+            if (tryAgain) {
+                System.out.println("☒ Error: Elige una opción válida.");
+            }
+
+            else {
+                System.out.println("");
+            }
+    
+            System.out.print("▶   ");
+
+            try {
+                opt = scanner.nextByte();
+                
+                switch (opt) {
+                    case 0: {
+                        generalService.cleanScreen();
+                        System.out.println("Cerrando sesión...");
+                        generalService.showLoadingTruck();
+                        break;
+                    }
+    
+                    case 1: {
+    
+                        break;
+                    }
+    
+                    case 2: {
+    
+                        break;
+                    }
+                    case 3: {
+    
+                        break;
+                    }
+    
+                    case 4: {
+                        break;
+                    }
+    
+                    case 5: {
+                        break;
+                    }
+    
+                    default: {
+                        System.out.println("Error: Elige una opción válida.");
+                        
+                    }
+                }
+            } catch (Exception e) {
+                scanner.nextLine();
+                tryAgain = true;
+            }
+
+
+        }
     }
 
-    public void menuPrincipal() {
+    public boolean categorias() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
 
-        do{
-            
+        do {
+
             // * Menu de inicio de sesión
-           System.out.println("Mercado Libre");
-            System.out.println("-------------------------");
-            System.out.println("1. Articulos principales");
-            System.out.println("2. Buscar articulos");
-            System.out.println("3. Categorias");
-            System.out.println("4. Configuración");
-            System.out.println("5. Vender");
-            System.out.println("0. Cerrar sesión");
-            System.out.println("-------------------------");
-            System.out.print("Seleccione una opción: ");
-            opt = scanner.nextByte();
-    
-            switch (opt) {
-                case 0: {
-                    System.out.println("Gracias por usar Mercado Libre :)");
-                    
-                }
-    
-                case 1: {
-                    
-                    break;
-                }
-    
-                case 2: {
-                    
-                    break;
-                }
-                case 3: {
-                    categorias();                    
-                    break;
-                }
-
-                default: {
-                    System.out.println("Error: Elige una opción válida.");
-                    break;
-                }
-            }
-
-        } while(opt != 0); }
-
-       public boolean categorias() {
-        Scanner scanner = new Scanner(System.in);
-        byte opt;
-
-        do{
-            
-            // * Menu de inicio de sesión
-           System.out.println("Mercado Libre");
+            System.out.println("Mercado Libre");
             System.out.println("-------------------------");
             System.out.println("1. Electrodomésticos");
             System.out.println("2. Libros");
@@ -134,46 +182,46 @@ public class Menus {
             System.out.println("-------------------------");
             System.out.print("Seleccione una opción: ");
             opt = scanner.nextByte();
-    
+
             switch (opt) {
                 case 0: {
-                    menuPrincipal();
+
                     break;
                 }
-    
+
                 case 1: {
                     break;
                 }
-    
+
                 case 2: {
-                    
+
                     break;
                 }
-                case 3: {                 
+                case 3: {
                     break;
                 }
                 case 4: {
-                    
+
                     break;
                 }
                 case 5: {
-                    
+
                     break;
                 }
                 case 6: {
-                
+
                     break;
                 }
                 case 7: {
-                    
+
                     break;
                 }
                 case 8: {
-                    
+
                     break;
                 }
                 case 9: {
-                                        
+
                     break;
                 }
 
@@ -183,7 +231,7 @@ public class Menus {
                 }
             }
 
-        } while(opt != 0);
-        return false;   
+        } while (opt != 0);
+        return false;
     }
 }

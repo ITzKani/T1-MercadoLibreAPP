@@ -1,12 +1,11 @@
-import Repository.Appliances;
+import UI.Menus;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        Menus menu = new Menus();
 
-        Appliances appliances = new Appliances();
-        appliances.getArticleList().forEach(article -> {
-            System.out.println(article.getId());
-        });
+        menu.showLogin();
+        
     }
 }
     
