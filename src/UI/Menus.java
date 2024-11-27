@@ -9,7 +9,6 @@ public class Menus {
     GeneralService generalService = new GeneralService();
 
     // * Método para mostrar el menú de inicio de sesión
-
     public void showLogin() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
@@ -33,10 +32,6 @@ public class Menus {
                 System.out.println("☒ Error: Elige una opción válida.");
             }
 
-            else {
-                System.out.println("");
-            }
-    
             System.out.print("▶   ");
     
             try {
@@ -79,29 +74,28 @@ public class Menus {
             }
         }
     }
-    
-    
 
     public void showPrincipalMenu() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
         boolean tryAgain = false;
 
-        while(tryAgain){
+        while (true) {  // Bucle principal para el menú
+            generalService.cleanScreen();  // Limpiar la pantalla al principio de cada ciclo
+
             // * Menu principal
             System.out.println("████████████████████████████████");
             System.out.println("     ⛟   Mercado Libre");
             System.out.println("");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-            System.out.println("⊞ 1. Home ⊞   ☰ 2. Categorias ☰");
+            System.out.println("⊞ 1. Home ⊞   ☰ 2. Categorías ☰");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-            System.out.println("   ✒ 3. Buscar articulos ✒");
-            System.out.println("");
+            System.out.println("   ✒ 3. Buscar artículos ✒");
             System.out.println("");
             System.out.println("✱ 4. Configuración✱");
             System.out.println("⚿ 0. Cerrar sesión ⚿");
+            System.out.println("████████████████████████████████");
             System.out.println("   ☑  Selecciona una opción");
-            System.out.println("");
     
             if (tryAgain) {
                 System.out.println("☒ Error: Elige una opción válida.");
@@ -110,7 +104,7 @@ public class Menus {
             else {
                 System.out.println("");
             }
-    
+
             System.out.print("▶   ");
 
             try {
@@ -121,45 +115,41 @@ public class Menus {
                         generalService.cleanScreen();
                         System.out.println("Cerrando sesión...");
                         generalService.showLoadingTruck();
-                        break;
+                        showLogin();  // Redirigir al inicio de sesión
+                        return;  // Salir del menú principal
                     }
     
                     case 1: {
-    
+                        System.out.println("Redirigiendo a Home...");
                         break;
                     }
     
                     case 2: {
-    
+                        System.out.println("Mostrando Categorías...");
                         break;
                     }
                     case 3: {
-    
+                        System.out.println("Buscando artículos...");
                         break;
                     }
     
                     case 4: {
-                        break;
-                    }
-    
-                    case 5: {
+                        System.out.println("Configurando...");
                         break;
                     }
     
                     default: {
                         System.out.println("Error: Elige una opción válida.");
-                        
+                        break;
                     }
                 }
             } catch (Exception e) {
                 scanner.nextLine();
                 tryAgain = true;
             }
-
-
         }
     }
-
+         
     public boolean categorias() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
