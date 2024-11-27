@@ -38,7 +38,7 @@ public class UserService {
         Scanner scanner = new Scanner(System.in);
         test();
     
-        //while (true) {
+        while (true) {
             System.out.print("Nombre de usuario: ");
             String username = scanner.nextLine();
             System.out.print("Contraseña: ");
@@ -50,11 +50,11 @@ public class UserService {
 
                 generalService.cleanScreen();
                 System.out.println("Bienvenido " + matchedUser.getUserName());
-                //break; 
+                break; 
             } else {
                 System.out.println("☒ Usuario o contraseña incorrectos. Inténtalo de nuevo.");
             }
-        //}
+        }
     }
     
     
