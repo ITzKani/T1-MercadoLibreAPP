@@ -10,10 +10,10 @@ public class GeneralService {
             String sistemaOperativo = System.getProperty("os.name").toLowerCase();
 
             if (sistemaOperativo.contains("win")) {
-                // Comando para Windows
+                // * Comando para Windows
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
-                // Comando para Unix/Linux/MacOS
+                // * Comando para Linux
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
             }
@@ -23,7 +23,7 @@ public class GeneralService {
     }
 
     public final void showLoadingTruck() {
-        String truck = "⛟";
+        String truck = "...⛟  ";
         int steps = 10; // Número de pasos en la animación
         int delay = 300; // Tiempo entre pasos en milisegundos
     

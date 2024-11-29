@@ -12,10 +12,10 @@ public class Menus {
     public void showLogin() {
         Scanner scanner = new Scanner(System.in);
         byte opt;
-        boolean tryAgain = false;  // Iniciar como falso, solo cambia si hay error de entrada
+        boolean tryAgain = false;  // * Iniciar como falso, solo cambia si hay error de entrada
     
-        while (true) {  // Un bucle infinito para seguir mostrando el menú
-            generalService.cleanScreen();  // Limpiar la pantalla al principio de cada ciclo
+        while (true) {  // * Un bucle infinito para seguir mostrando el menú
+            generalService.cleanScreen();  // * Limpiar la pantalla al principio de cada ciclo
     
             // * Menú de inicio de sesión
             System.out.println("████████████████████████████████");
@@ -35,31 +35,32 @@ public class Menus {
             System.out.print("▶   ");
     
             try {
-                opt = scanner.nextByte();  // Intentar leer la opción del usuario
-                tryAgain = false;  // Restablecer tryAgain si la entrada es válida
+                opt = scanner.nextByte();  // * Intentar leer la opción del usuario
+                tryAgain = false;  // * Restablecer tryAgain si la entrada es válida
     
                 switch (opt) {
                     case 0:
-                        // Salir
+                        // * Salir
                         generalService.cleanScreen();
                         System.out.println("Gracias por usar Mercado Libre...⛟");
-                        return;  // Terminar el programa
+                        return;  // * Terminar el programa
     
                     case 1:
-                        // Iniciar sesión
+                        // * Iniciar sesión
                         userService.login();
-                        generalService.showLoadingTruck();  // Mostrar la animación de carga
-                        generalService.cleanScreen();  // Limpiar la pantalla después de cargar
-                        showPrincipalMenu();  // Mostrar el menú principal
-                        break;  // Asegurarse de salir del switch después de ejecutar esta opción
+                        generalService.showLoadingTruck();  // * Mostrar la animación de carga
+                        generalService.cleanScreen();  // * Limpiar la pantalla después de cargar
+                        showPrincipalMenu();  // * Mostrar el menú principal
+                        break;  // * Asegurarse de salir del switch después de ejecutar esta opción
     
                     case 2:
-                        // Registrarse
+                        // * Registrarse
+                        generalService.cleanScreen();
                         userService.addUser();
-                        generalService.showLoadingTruck();  // Mostrar la animación de carga
-                        generalService.cleanScreen();  // Limpiar la pantalla después de cargar
-                        showPrincipalMenu();  // Mostrar el menú principal
-                        break;  // Asegurarse de salir del switch después de ejecutar esta opción
+                        generalService.showLoadingTruck();  // * Mostrar la animación de carga
+                        generalService.cleanScreen();  // * Limpiar la pantalla después de cargar
+                        showPrincipalMenu();  // * Mostrar el menú principal
+                        break;  // * Asegurarse de salir del switch después de ejecutar esta opción
     
                     default:
                         // Opción inválida
@@ -87,12 +88,13 @@ public class Menus {
             System.out.println("████████████████████████████████");
             System.out.println("     ⛟   Mercado Libre");
             System.out.println("");
+            System.out.println("       ✪ 1. Mi perfil ✪");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-            System.out.println("⊞ 1. Home ⊞   ☰ 2. Categorías ☰");
+            System.out.println("⊞ 2. Home ⊞   ☰ 3. Categorías ☰");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-            System.out.println("   ✒ 3. Buscar artículos ✒");
+            System.out.println("    ✒ 4. Buscar artículos ✒");
             System.out.println("");
-            System.out.println("✱ 4. Configuración✱");
+            System.out.println("✱ 5. Configuración ✱");
             System.out.println("⚿ 0. Cerrar sesión ⚿");
             System.out.println("████████████████████████████████");
             System.out.println("   ☑  Selecciona una opción");
