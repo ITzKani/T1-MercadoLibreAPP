@@ -70,14 +70,90 @@ public class MenuCategorias {
 
                     // * Categoria de Libros
                     case 2: {
+                        List<Article> booksList = new ArrayList<>();
+                        booksList = booksList.getBooksList();
+
+                        for (Article article : booksList) {
+                            System.out.println(article);
+                        }
                         break;
                     }
 
                     // * Categoria de Moda y belleza
                     case 3: {
+                        List<Article> fashionList = new ArrayList<>();
+                        fashionList = fashionList.getFashionList();
+
+                        for (Article article : fashionList) {
+                            System.out.println(article);
+                        }
                         break;
                     }
 
+                    // * Categoria de Muebles
+                    case 4: {
+                        List<Article> furnitureList = new ArrayList<>();
+                        furnitureList = furnitureList.getFurnitureList();
+
+                        for (Article article : furnitureList) {
+                            System.out.println(article);
+                        }
+                        break;
+                    }
+
+                    // * Categoria de Hogar
+                    case 5: {
+                        List<Article> homeList = new ArrayList<>();
+                        homeList = homeList.getHomeList();
+
+                        for (Article article : homeList) {
+                            System.out.println(article);
+                        }
+                        break;
+                    }
+
+                    // * Categoria de Mascotas
+                    case 6: {
+                        List<Article> petsList = new ArrayList<>();
+                        petsList = petsList.getPetsList();
+
+                        for (Article article : petsList) {
+                            System.out.println(article);
+                        }
+                        break;
+                    }
+
+                    // * Categoria de Deportes
+                    case 7: {
+                        List<Article> sportsList = new ArrayList<>();
+                        sportsList = sportsList.getSportsList();
+
+                        for (Article article : sportsList) {
+                            System.out.println(article);
+                        }
+                        break;
+                    }
+
+                    // * Categoria de Tecnología
+                    case 8: {
+                        List<Article> technologyList = new ArrayList<>();
+                        technologyList = technologyList.getTechnologyList();
+
+                        for (Article article : technologyList) {
+                            System.out.println(article);
+                        }
+                        break;
+                    }
+
+                    // * Categoria de Juguetes
+                    case 9: {
+                        List<Article> toysList = new ArrayList<>();
+                        toysList = toysList.getToysList();
+                        for (Article article : toysList) {
+                            System.out.println(article);
+                        }
+                    }
+                        break;
                     default:
                     scanner.nextLine();
                     tryAgain = true;
