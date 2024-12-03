@@ -300,4 +300,7 @@ public class UserService {
         return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 
+    public void setUser() {
+    }
+
 }

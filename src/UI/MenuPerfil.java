@@ -43,7 +43,11 @@ public class MenuPerfil {
                         generalService.cleanScreen();
                         System.out.println("Regresando...");
                         generalService.showLoadingTruck();
-                        break;
+                        return;
+                    }
+
+                    case 1: {
+
                     }
 
                     default:
