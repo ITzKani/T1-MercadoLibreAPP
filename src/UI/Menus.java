@@ -98,6 +98,7 @@ public class Menus {
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             System.out.println("    ✒ 4. Buscar artículos ✒");
             System.out.println("");
+            System.out.println("✱ 5. Vender ✱");
             System.out.println("⚿ 0. Cerrar sesión ⚿");
             System.out.println("████████████████████████████████");
             System.out.println("   ☑  Selecciona una opción");

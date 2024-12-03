@@ -1,7 +1,10 @@
 package UI;
 
 import java.util.Scanner;
+
+import Model.User;
 import Service.GeneralService;
+import Service.UserService;
 
 public class MenuPerfil {
 
@@ -58,9 +61,6 @@ public class MenuPerfil {
                 tryAgain = true;
             }
             
-            
         }
-
-
     }
 }
