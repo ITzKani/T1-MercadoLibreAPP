@@ -23,8 +23,7 @@ public class UserService {
     // * Lista general de usuarios
     List<User> userList = new ArrayList<>();
     User admin = new User(1, "ITz", "Dagan", "Vega", "daganjv13@gmail.com", "root", 563023501);
-    User admin2 = new User(2, "PacmanXDdeoz", "Carlos", "Vazquez", "carlosangel2710@hotmail.com", "pa55word",
-            553854005);
+    User admin2 = new User(2, "PacmanXDdeoz", "Carlos", "Vazquez", "carlosangel2710@hotmail.com", "pa55word", 553854005);
     User admin3 = new User(3, "Mangel", "Miguel", "Amado", "Miguelag@gmail.com", "amado55", 557811154);
     User admin4 = new User(4, "ihatebruno", "Bruno", "Villegas", "brunogaelav2004@gmail.com", "hola1224", 553795599);
     User admin5 = new User(5, "AntonioIvann", "Antonio", "Reyes", "rantonioivann@gmail.com", "juanwick", 551263178);
@@ -37,15 +36,17 @@ public class UserService {
         userList.add(admin5);
     }
 
+    int index;
+
     public void login() {
         Scanner scanner = new Scanner(System.in);
-        test(); // Método auxiliar (no especificado en tu código)
-
-        boolean loginFailed = false; // Variable para controlar si la autenticación falla
-
+        test(); // Cargar usuarios en la lista
+    
+        boolean loginFailed = false; // Controla el mensaje de error
+    
         while (true) {
             generalService.cleanScreen();
-
+    
             // Dibujar la pantalla de inicio de sesión
             System.out.println("████████████████████████████████");
             System.out.println("    ⛟   Mercado Libre");
@@ -57,22 +58,19 @@ public class UserService {
             System.out.println("");
             System.out.println("████████████████████████████████");
             System.out.println("    ☑  Ingresa tu usuario");
-
-            // Mostrar mensaje de error solo si falla el login
+    
             if (loginFailed) {
                 System.out.println("☒ Usuario o contraseña incorrectos.");
-            }
-
-            else {
+            } else {
                 System.out.println("");
             }
-
+    
             System.out.print("▶   ");
             String username = scanner.nextLine(); // Leer el usuario
-
+    
             generalService.cleanScreen();
-
-            // Dibujar la segunda pantalla para la contraseña
+    
+            // Dibujar la pantalla para la contraseña
             System.out.println("████████████████████████████████");
             System.out.println("    ⛟   Mercado Libre");
             System.out.println("         ᴵⁿⁱᶜⁱᵃ ˢᵉˢⁱᵒⁿ");
@@ -86,24 +84,31 @@ public class UserService {
             System.out.println("");
             System.out.print("▶   ");
             String password = scanner.nextLine(); // Leer la contraseña
-
-            // Buscar usuario que coincida con las credenciales
+    
+            // Crear un objeto temporal con las credenciales
+            User tempUser = new User(0, username, null, null, null, password, 0);
+    
+            // Buscar usuario coincidente
             User matchedUser = userList.stream()
                     .filter(user -> user.getUserName().equals(username) && user.getPassword().equals(password))
                     .findFirst()
                     .orElse(null);
-
+    
             if (matchedUser != null) {
                 // Login exitoso
+                index = userList.indexOf(matchedUser); // Obtener índice del usuario
+    
                 generalService.cleanScreen();
                 System.out.println("Bienvenido " + matchedUser.getUserName());
+                System.out.println("Tu índice en el sistema es: " + index);
                 break; // Salir del bucle
             } else {
                 // Login fallido
-                loginFailed = true; // Activar el mensaje de error para el siguiente ciclo
+                loginFailed = true; // Activar mensaje de error
             }
         }
     }
+    
 
     // * Creamos la funcion "register"
 
@@ -300,7 +305,5 @@ public class UserService {
         return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 
-    public void setUser() {
-    }
 
 }

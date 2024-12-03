@@ -92,7 +92,7 @@ public class Menus {
             System.out.println("████████████████████████████████");
             System.out.println("     ⛟   Mercado Libre");
             System.out.println("");
-            System.out.println("       ✪ 1. Mi perfil ✪");
+            System.out.println("       ✪ Mi perfil ✪");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             System.out.println("⊞ 2. Home ⊞   ☰ 3. Categorías ☰");
             System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -122,11 +122,7 @@ public class Menus {
                         generalService.showLoadingTruck();
                         return; // Salir del menú principal
                     }
-                    case 1: {
-                        generalService.cleanScreen();
-                        menuPerfil.showProfile();
-                        break;
-                    }
+
                     case 2: {
                         generalService.cleanScreen();
                         System.out.println("Cargando Home...");
@@ -146,8 +142,7 @@ public class Menus {
                     }
                     case 5: {
                         generalService.cleanScreen();
-                        System.out.println("Accediendo a configuración...");
-                        // generalService.showSettings();
+                        System.out.println("");
                         break;
                     }
                     default: {
