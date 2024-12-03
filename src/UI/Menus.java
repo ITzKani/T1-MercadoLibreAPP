@@ -3,10 +3,12 @@ package UI;
 import Service.UserService;
 import Service.GeneralService;
 import java.util.Scanner;
+import UI.MenuPerfil;
 
 public class Menus {
     UserService userService = new UserService();
     GeneralService generalService = new GeneralService();
+    MenuPerfil menuPerfil = new MenuPerfil();
 
     // * Método para mostrar el menú de inicio de sesión
     public void showLogin() {
@@ -80,10 +82,10 @@ public class Menus {
         Scanner scanner = new Scanner(System.in);
         byte opt;
         boolean tryAgain = false;
-
+    
         while (true) {  // Bucle principal para el menú
             generalService.cleanScreen();  // Limpiar la pantalla al principio de cada ciclo
-
+    
             // * Menu principal
             System.out.println("████████████████████████████████");
             System.out.println("     ⛟   Mercado Libre");
@@ -98,59 +100,67 @@ public class Menus {
             System.out.println("⚿ 0. Cerrar sesión ⚿");
             System.out.println("████████████████████████████████");
             System.out.println("   ☑  Selecciona una opción");
-    
+        
             if (tryAgain) {
                 System.out.println("☒ Error: Elige una opción válida.");
-            }
-
-            else {
+            } else {
                 System.out.println("");
             }
-
+    
             System.out.print("▶   ");
-
+    
             try {
                 opt = scanner.nextByte();
+                tryAgain = false;  // Reinicia el estado de error
                 
                 switch (opt) {
                     case 0: {
                         generalService.cleanScreen();
                         System.out.println("Cerrando sesión...");
                         generalService.showLoadingTruck();
-                        showLogin();  // Redirigir al inicio de sesión
                         return;  // Salir del menú principal
                     }
-    
                     case 1: {
-                        System.out.println("Redirigiendo a Home...");
+                        generalService.cleanScreen();
+                        menuPerfil.showProfile();
                         break;
                     }
-    
                     case 2: {
-                        System.out.println("Mostrando Categorías...");
+                        generalService.cleanScreen();
+                        System.out.println("Cargando Home...");
+                        // generalService.showHome();
                         break;
                     }
                     case 3: {
-                        System.out.println("Buscando artículos...");
+                        generalService.cleanScreen();
+                        System.out.println("Cargando categorías...");
+                        // generalService.showCategories();
                         break;
                     }
-    
                     case 4: {
-                        System.out.println("Configurando...");
+                        generalService.cleanScreen();
+                        System.out.println("Buscando artículos...");
+                        // generalService.searchItems();
                         break;
                     }
-    
+                    case 5: {
+                        generalService.cleanScreen();
+                        System.out.println("Accediendo a configuración...");
+                        // generalService.showSettings();
+                        break;
+                    }
                     default: {
-                        System.out.println("Error: Elige una opción válida.");
+                        tryAgain = true;
                         break;
                     }
                 }
             } catch (Exception e) {
-                scanner.nextLine();
+                scanner.nextLine(); // Limpia el buffer del escáner
                 tryAgain = true;
             }
         }
     }
+    
          
     public boolean categorias() {
         Scanner scanner = new Scanner(System.in);
