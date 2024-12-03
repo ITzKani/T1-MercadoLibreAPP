@@ -82,8 +82,19 @@ public class Article {
     // * Método toString
     @Override
     public String toString() {
-        return "Article [id=" + id + ", title=" + title + ", characteristics=" + characteristics + ", description="
-                + description + ", category=" + category + ", seller=" + seller + ", price=" + price + "]";
+        System.out.println("████████████████████████████████");
+            System.out.println(title);
+            System.out.println(category);
+            System.out.println(id);
+            System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            System.out.println("$" + price);
+            System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            System.out.println(seller);
+            System.out.println("");
+            System.out.println(characteristics);
+            System.out.println(description);
+            System.out.println("████████████████████████████████");
+        return "";
     }
 
 

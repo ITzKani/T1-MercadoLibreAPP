@@ -1,6 +1,7 @@
 package Service;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class GeneralService {
 
@@ -26,7 +27,7 @@ public class GeneralService {
         String truck = "...⛟  ";
         int steps = 10; // Número de pasos en la animación
         int delay = 300; // Tiempo entre pasos en milisegundos
-    
+
         for (int i = 0; i < steps; i++) {
             try {
                 // Borra la línea anterior para simular movimiento
@@ -39,6 +40,19 @@ public class GeneralService {
             }
         }
     }
-    
-    
+
+    public void back() {
+        Scanner scanner = new Scanner(System.in);
+        int opt;
+        System.out.println("   ☑  Selecciona 0 para regresar");
+
+        try {
+            opt = scanner.nextInt();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        System.out.print("▶   ");
+    }
+
 }
