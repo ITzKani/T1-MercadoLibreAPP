@@ -7,12 +7,28 @@ import java.util.Scanner;
 import Model.Article;
 import Service.GeneralService;
 import Repository.Appliances;
+import Repository.Books;
+import Repository.Fashion;
+import Repository.Furniture;
+import Repository.Home;
+import Repository.Pets;
+import Repository.Sports;
+import Repository.Technology;
+import Repository.Toys;
 
 public class MenuCategorias {
 
     GeneralService generalService = new GeneralService();
 
     Appliances appliances = new Appliances();
+    Books books = new Books();
+    Fashion fashion = new Fashion();
+    Furniture furniture = new Furniture();
+    Home home = new Home();
+    Pets pets = new Pets();
+    Sports sports = new Sports();
+    Technology technology = new Technology();
+    Toys toys = new Toys();
     
     public void showCategorias() {
         Scanner scanner = new Scanner(System.in);
